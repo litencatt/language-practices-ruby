@@ -9,11 +9,10 @@ loop do
     port = socket.peeraddr[1]
 
     while buf = socket.gets
-      buf = "#{Time.now}\n#{port}: #{buf}"
-      puts buf
+      puts "#{Time.now} #{port}: #{buf}"
     end
 
-    puts "close socket"
+    puts "close #{port} socket"
     socket.close
   end
 end
