@@ -2,11 +2,9 @@ require 'socket'
 
 sock = TCPSocket.open("localhost", 20000)
 
-while line = $stdin.gets
-  sock.puts line
+while buf = $stdin.gets
+  sock.puts buf
   sock.flush
-
-  puts sock.gets
 end
 
 sock.close

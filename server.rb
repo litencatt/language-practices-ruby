@@ -1,16 +1,18 @@
 require 'socket'
 
+puts "Start server"
 s = TCPServer.open(20000)
 
-puts "Start server"
 loop do
   socket = s.accept
+  puts "accept #{socket.peeraddr}"
 
-  while str = socket.gets.chomp
-    puts "RECV : #{str}"
-
-    socket.puts "Server received '#{str} from client'"
+  while buf = socket.gets
+    puts buf
   end
 
+  puts "close socket"
   socket.close
 end
+
+s.close
