@@ -1,10 +1,10 @@
 require 'socket'
 
-sock = TCPSocket.open("localhost", 20000)
+socket = TCPSocket.open("localhost", 20000)
 
-while buf = $stdin.gets
-  sock.puts buf
-  sock.flush
+loop do
+  socket.puts %w(yes no agree disagree).sample
+  sleep(5)
 end
 
-sock.close
+socket.close
